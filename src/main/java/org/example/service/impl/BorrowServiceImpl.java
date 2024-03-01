@@ -1,9 +1,9 @@
 package org.example.service.impl;
 
-import org.example.dto.Book;
-import org.example.entity.BookEntity;
-import org.example.repository.BookRepository;
-import org.example.service.BookService;
+import org.example.dto.Borrow;
+import org.example.entity.BorrowEntity;
+import org.example.repository.BorrowRepository;
+import org.example.service.BorrowService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -13,9 +13,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class  BookServiceImpl implements BookService {
+public class BorrowServiceImpl implements BorrowService {
     @Autowired
-    BookRepository repository;
+    BorrowRepository repository;
 
     ModelMapper mapper;
     @Bean
@@ -23,13 +23,13 @@ public class  BookServiceImpl implements BookService {
         this.mapper=new ModelMapper();
     }
     @Override
-    public void addBook(Book book) {
-        BookEntity entity=mapper.map(book, BookEntity.class);
+    public void addBook(Borrow book) {
+        BorrowEntity entity=mapper.map(book, BorrowEntity.class);
         repository.save(entity);
     }
 
-    public List<BookEntity> getBook() {
-       return (List<BookEntity>) repository.findAll();
+    public List<BorrowEntity> getBook() {
+       return (List<BorrowEntity>) repository.findAll();
     }
 
     @Override
@@ -43,9 +43,9 @@ public class  BookServiceImpl implements BookService {
     }
 
     @Override
-    public Book getBookById(Long id) {
-        Optional<BookEntity> byId = repository.findById(id);
-        return mapper.map(byId,Book.class) ;
+    public Borrow getBookById(Long id) {
+        Optional<BorrowEntity> byId = repository.findById(id);
+        return mapper.map(byId, Borrow.class) ;
     }
 
 

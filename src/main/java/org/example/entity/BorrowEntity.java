@@ -12,15 +12,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class BookEntity {
+public class BorrowEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String isbn;
-    private String title;
-    private String author;
-    private String category;
-    private Integer qty;
 
+    private Long id;
+    private String contact;
+    private String userName;
+    private String name;
+    private String nic;
+    private String email;
+    private String address;
+    private String password;
+    private String country;
 }

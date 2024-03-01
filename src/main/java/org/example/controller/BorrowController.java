@@ -1,29 +1,28 @@
 package org.example.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.dto.Book;
-import org.example.entity.BookEntity;
-import org.example.service.BookService;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.example.dto.Borrow;
+import org.example.entity.BorrowEntity;
+import org.example.service.BorrowService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/book")
+@RequestMapping("/borrow")
 @RequiredArgsConstructor
 @CrossOrigin
-public class BookController{
+public class BorrowController {
     //@Autowired
-    final BookService service;
+    final BorrowService service;
 
     @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
-    public void addBook(@RequestBody Book book){
+    public void addBook(@RequestBody Borrow book){
     service.addBook(book);
 }
 
     @GetMapping("/get")
-    public Iterable<BookEntity> getBook(){
+    public Iterable<BorrowEntity> getBook(){
         return service.getBook();
     }
 
@@ -43,7 +42,7 @@ public class BookController{
 //    }
 
     @GetMapping("search/{id}")
-    public Book getBookId(@PathVariable Long id){
+    public Borrow getBookBorrowId(@PathVariable Long id){
         return service.getBookById(id);
     }
 }
